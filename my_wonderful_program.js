@@ -12,76 +12,81 @@ console.log("Node rocks!")
         {
             if(arg.s)
             {   
-                if(password[0]>="0" && password[0]<="9")
+                for(let j=0;j<password.length;j++)
                 {
-                    console.log(ansicolor.red(password[0])+password.slice(1))
+                    if(password[j]>="0" && password[j]<="9")
+                    {
+                       process.stdout.write(ansicolor.red(password[j]))
+                    }
+                    if((password[j]>='!'&& password[j]<='/')||(password[j]>=':'&& password[j]<='@')
+                    ||(password[j]>='\\'&& password[j]<='`')||(password[j]>='{'&& password[j]<='~'))
+                    {
+                        process.stdout.write(ansicolor.blue(password[j]))
+                    }
+                    else
+                    {
+                       process.stdout.write(password[j])
+                    }
                 }
-                else
-                {
-                    console.log(ansicolor.blue(password[0])+password.slice(1)) 
-                }
-            }
-            else
-            {
-                    console.log(password)
-            }
-
+                process.stdout.write("\n")   
+            }  
         }
         
         else
         {
-            if(arg.s)
-            {   
-                 if(password[0]>="0" && password[0]<="9")
-                 {
-                    clipboard.write(ansicolor.red(password[0]))
-                 }
-                elses
-                {
-                    clipboard.write(ansicolor.blue(password[0])) 
-                }
-            }
+            
             clipboard.write(password)
         }
     }
     
-    function passwordGenerator(length) 
+    function passwordGenerator(length) //une fonction qui génère un password avec un nombre de caracteres en paramètre
     {
         let possibleCharacters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        let possibleNumbers=`0123456789/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/`;
+        let possibleNumbers="0123456789";
+        let possibleSymbols="/.,?§!*$}=+])°@^_`|-[({'#\"~&%#";
+       
       
         if(arg.lengthArg)
-        {
+        {   
             length = arg.lengthArg
+            let indexAleatoireNumber= Math.floor(Math.random() *length)
+            let indexAleatoireSymbol= Math.floor(Math.random() *length)
             for(let i = 0;i < arg.lengthArg; i++)
             {
                 
-                if (arg.s && i==0)
+                if (arg.s && i==indexAleatoireNumber)
                 {
-                    password += possibleNumbers.charAt(Math.floor(Math.random() * possibleNumbers.length))
-                   
+                    password += possibleNumbers.charAt(Math.floor(Math.random() * possibleNumbers.length))   
+                }
+                if (arg.s && i==indexAleatoireSymbol)
+                {
+                    password += possibleSymbols.charAt(Math.floor(Math.random() * possibleSymbols.length))
                 } 
-                password += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
+                password += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length))    
             }
-            
         }
         else
-        {
+        {   
+            let indexAleatoireNumber= Math.floor(Math.random() *length)
+            let indexAleatoireSymbol= Math.floor(Math.random() *length)
             for(let i = 0;i < length; i++)
             {
-                
-                if (arg.s && i==0)
+                if (arg.s && i==indexAleatoireNumber)
                 {
-                    password += possibleNumbers.charAt(Math.floor(Math.random() * possibleNumbers.length))
-                    
+                    password += possibleNumbers.charAt(Math.floor(Math.random() * possibleNumbers.length))   
+                }
+                if (arg.s && i==indexAleatoireSymbol)
+                {
+                    password += possibleSymbols.charAt(Math.floor(Math.random() * possibleSymbols.length))
                 } 
                 password += possibleCharacters.charAt(Math.floor(Math.random() * possibleCharacters.length));
             }
-        }
-        
+        }  
     }
 
-    passwordGenerator(10)
+    passwordGenerator(8)
     passwordDisplayed(password)
+
+
   
   
