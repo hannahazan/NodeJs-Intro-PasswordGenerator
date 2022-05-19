@@ -1,0 +1,25 @@
+{
+  "name": "nodejs-intro-passwordgenerator",
+  "version": "1.0.0",
+  "description": "0. Create a new project folder `password-generator`, then generate a `package.json` using the command `npm init` (and `git init` and commit each step of your work) ; create an empty `my_wonderful_program.js`, and make it print \"Node rocks!\" in the console when running `node my_wonderful_program.js`",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hannahazan/NodeJs-Intro-PasswordGenerator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hannahazan/NodeJs-Intro-PasswordGenerator/issues"
+  },
+  "homepage": "https://github.com/hannahazan/NodeJs-Intro-PasswordGenerator#readme",
+  "dependencies": {
+    "ansicolor": "^1.1.100",
+    "clipboardy": "^3.0.0",
+    "yargs": "^17.5.1"
+  },
+  "type": "module"
+}
